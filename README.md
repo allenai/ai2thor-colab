@@ -4,6 +4,8 @@
 
 ## Templates
 
-To get started, we recommend copying the [AI2-THOR Colab Minimal Starter Template](https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing) locally.
+To get started, we recommend copying the <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">AI2-THOR Colab Minimal Starter Template</a> locally.
 
-<img width="100%" src="doc/static/starter-template.jpg" />
+<a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">
+  <img width="100%" src="doc/static/starter-template.png" />
+</a>
