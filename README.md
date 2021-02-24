@@ -2,7 +2,7 @@
 
 ---
 
-Provides the ability and enhancements to run [AI2-THOR](https://github.com/allenai/ai2thor) freely on the Cloud using Google Colab. AI2-THOR is a near photo-realistic interactable framework for AI agents.
+AI2-THOR Colab provides the ability and enhancements to run [AI2-THOR](https://github.com/allenai/ai2thor) freely on the cloud using Google Colab. AI2-THOR is a near photo-realistic interactable framework for AI agents.
 
 ## Templates
 
