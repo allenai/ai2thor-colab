@@ -1,4 +1,6 @@
-# AI2-THOR Colab
+<p align="center"><img width="80%" src="doc/static/cover.svg" /></p>
+
+---
 
 ## Templates
 
