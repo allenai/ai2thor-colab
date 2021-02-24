@@ -41,6 +41,6 @@ frames = [controller.step("RotateRight").frame for _ in range(10)]
 ai2thor_colab.show_video(frames, fps=5)
 ```
 
-#### License
+## License
 
 AI2-THOR Colab is [Apache Licensed](LICENSE).
