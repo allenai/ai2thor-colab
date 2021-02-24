@@ -6,7 +6,7 @@ Provides the ability and enhancements to run [AI2-THOR](https://github.com/allen
 
 ## Templates
 
-To get started, we recommend copying the <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">AI2-THOR Colab Minimal Starter Template</a> locally.
+To get started, we recommend saving a copy of the <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">AI2-THOR Colab Minimal Starter Template</a> to your drive.
 
 <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">
   <img width="100%" src="doc/static/starter-template.png" />
