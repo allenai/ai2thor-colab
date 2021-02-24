@@ -36,7 +36,7 @@ def start_server():
             # https://gist.github.com/jterrace/2911875
             # and several other Colab notebooks that have started an XVFB in Colab :)
             writefile.write(
-                """
+                """#credit to https://gist.github.com/jterrace/2911875
 XVFB=/usr/bin/Xvfb
 XVFBARGS=":1 -screen 0 1024x768x24 -ac +extension GLX +render -noreset"
 PIDFILE=./frame-buffer.pid
@@ -63,28 +63,26 @@ esac
 exit 0"""
             )
             progress_display.update(progress_bar(percentage_done=5))
-            os.system("apt-get install daemon >/dev/null 2>&1")
+            os.system("apt-get install daemon &> /dev/null")
 
             progress_display.update(progress_bar(percentage_done=10))
-            os.system("apt-get install wget >/dev/null 2>&1")
+            os.system("apt-get install wget &> /dev/null")
 
             progress_display.update(progress_bar(percentage_done=20))
             os.system(
-                "wget http://security.ubuntu.com/ubuntu/pool/main/libx/libxfont/libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb >/dev/null 2>&1"
+                "wget http://security.ubuntu.com/ubuntu/pool/main/libx/libxfont/libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb &> /dev/null"
             )
 
             progress_display.update(progress_bar(percentage_done=30))
             os.system(
-                "wget --output-document xvfb.deb http://security.ubuntu.com/ubuntu/pool/universe/x/xorg-server/xvfb_1.18.4-0ubuntu0.11_amd64.deb >/dev/null 2>&1"
+                "wget --output-document xvfb.deb http://security.ubuntu.com/ubuntu/pool/universe/x/xorg-server/xvfb_1.18.4-0ubuntu0.11_amd64.deb &> /dev/null"
             )
 
             progress_display.update(progress_bar(percentage_done=40))
-            os.system(
-                "dpkg -i libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb >/dev/null 2>&1"
-            )
+            os.system("dpkg -i libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb &> /dev/null")
 
             progress_display.update(progress_bar(percentage_done=50))
-            os.system("dpkg -i xvfb.deb >/dev/null 2>&1")
+            os.system("dpkg -i xvfb.deb &> /dev/null")
 
             progress_display.update(progress_bar(percentage_done=70))
             os.system("rm libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb")
@@ -96,6 +94,7 @@ exit 0"""
             os.system("bash frame-buffer start")
 
             os.environ["DISPLAY"] = ":1"
+        progress_display.update(progress_bar(percentage_done=100))
 
 
 def side_by_side():
