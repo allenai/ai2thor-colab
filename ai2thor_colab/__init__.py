@@ -6,8 +6,9 @@ import imageio
 # this has no cost when ffmpeg is already downloaded, but
 # it prevents moviepy from displaying an annoying message
 saved_stdout = sys.stdout
-sys.stdout = open("/dev/null", "w")
-imageio.plugins.ffmpeg.download()
+with open("/dev/null", "w") as f:
+    sys.stdout = f
+    imageio.plugins.ffmpeg.download()
 sys.stdout = saved_stdout
 
 from moviepy.editor import ImageSequenceClip
