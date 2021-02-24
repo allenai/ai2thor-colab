@@ -1,15 +1,15 @@
 from setuptools import setup
-import os
 
 setup(
     name="ai2thor_colab",
     packages=["ai2thor_colab"],
-    version="0.0.1",
+    version="0.0.1.dev1",
     license="Apache",
     description="Support to run AI2-THOR freely in Google Colab!",
     long_description="Support to run AI2-THOR freely in Google Colab!",
     author_email="ai2thor@allenai.org",
     author="Allen Institute for AI",
+    install_requires=["numpy", "moviepy"],
     url="https://github.com/allenai/ai2thor-colab",
     classifiers=[
         "Intended Audience :: Science/Research",
@@ -23,5 +23,4 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
     ],
-    include_package_data=True,
 )

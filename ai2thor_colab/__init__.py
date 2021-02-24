@@ -1,101 +1,104 @@
 from IPython.display import HTML, display
+import sys
+
+import imageio
+
+# this has no cost when ffmpeg is already downloaded, but
+# it prevents moviepy from displaying an annoying message
+saved_stdout = sys.stdout
+sys.stdout = open("/dev/null", "w")
+imageio.plugins.ffmpeg.download()
+sys.stdout = saved_stdout
+
+from moviepy.editor import ImageSequenceClip
+from typing import Sequence
+import numpy as np
 import os
 
 
-def progress_bar(percentage_done: int):
-    """Display a green progress loading bar.
-
-    @param percentage_done is the current percentage of progress, in [0:100].
-    """
-    if percentage_done < 0 or percentage_done > 100:
-        raise ValueError("value must be in [0:100]. You gave " + percentage_done)
-    return HTML(
-        f"""
-        <progress
-            value="{percentage_done}"
-            max="100",
-            style="width: 100%"
-        >
-            {percentage_done}
-        </progress>"""
-    )
+def show_video(frames: Sequence[np.ndarray], fps: int = 10):
+    """Show a video composed of a sequence of frames."""
+    frames = ImageSequenceClip(frames, fps=fps)
+    return frames.ipython_display()
 
 
-def start_server():
-    progress_display = display(progress_bar(percentage_done=0), display_id=True)
+def start_xserver():
+    """Provide the ability to render AI2-THOR using Google Colab."""
+
+    def progress(value):
+        return HTML(
+            f"""
+            <progress value='{value}' max="100", style='width: 100%'>
+                {value}
+            </progress>
+        """
+        )
+
+    progress_bar = display(progress(0), display_id=True)
+
     try:
         import google.colab
 
         using_colab = True
-    except:
+    except ImportError:
         using_colab = False
 
     if using_colab:
         with open("frame-buffer", "w") as writefile:
-            # credit for much of this goes to
-            # https://gist.github.com/jterrace/2911875
-            # and several other Colab notebooks that have started an XVFB in Colab :)
             writefile.write(
-                """#credit to https://gist.github.com/jterrace/2911875
-XVFB=/usr/bin/Xvfb
-XVFBARGS=":1 -screen 0 1024x768x24 -ac +extension GLX +render -noreset"
-PIDFILE=./frame-buffer.pid
-case "$1" in
-start)
-echo -n "Starting virtual X frame buffer: Xvfb"
-/sbin/start-stop-daemon --start --quiet --pidfile $PIDFILE --make-pidfile --background --exec $XVFB -- $XVFBARGS
-echo "."
-;;
-stop)
-echo -n "Stopping virtual X frame buffer: Xvfb"
-/sbin/start-stop-daemon --stop --quiet --pidfile $PIDFILE
-rm $PIDFILE
-echo "."
-;;
-restart)
-$0 stop
-$0 start
-;;
-*)
-    echo "Usage: /etc/init.d/xvfb {start|stop|restart}"
-    exit 1
-esac
-exit 0"""
-            )
-            progress_display.update(progress_bar(percentage_done=5))
-            os.system("apt-get install daemon &> /dev/null")
-
-            progress_display.update(progress_bar(percentage_done=10))
-            os.system("apt-get install wget &> /dev/null")
-
-            progress_display.update(progress_bar(percentage_done=20))
-            os.system(
-                "wget http://security.ubuntu.com/ubuntu/pool/main/libx/libxfont/libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb &> /dev/null"
+                """#taken from https://gist.github.com/jterrace/2911875
+        XVFB=/usr/bin/Xvfb
+        XVFBARGS=":1 -screen 0 1024x768x24 -ac +extension GLX +render -noreset"
+        PIDFILE=./frame-buffer.pid
+        case "$1" in
+        start)
+            /sbin/start-stop-daemon --start --quiet --pidfile $PIDFILE --make-pidfile --background --exec $XVFB -- $XVFBARGS
+            ;;
+        stop)
+            /sbin/start-stop-daemon --stop --quiet --pidfile $PIDFILE
+            rm $PIDFILE
+            ;;
+        restart)
+            $0 stop
+            $0 start
+            ;;
+        *)
+                exit 1
+        esac
+        exit 0
+            """
             )
 
-            progress_display.update(progress_bar(percentage_done=30))
-            os.system(
-                "wget --output-document xvfb.deb http://security.ubuntu.com/ubuntu/pool/universe/x/xorg-server/xvfb_1.18.4-0ubuntu0.11_amd64.deb &> /dev/null"
-            )
+        progress_bar.update(progress(5))
+        os.system("apt-get install daemon >/dev/null 2>&1")
 
-            progress_display.update(progress_bar(percentage_done=40))
-            os.system("dpkg -i libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb &> /dev/null")
+        progress_bar.update(progress(10))
+        os.system("apt-get install wget >/dev/null 2>&1")
 
-            progress_display.update(progress_bar(percentage_done=50))
-            os.system("dpkg -i xvfb.deb &> /dev/null")
+        progress_bar.update(progress(20))
+        os.system(
+            "wget http://security.ubuntu.com/ubuntu/pool/main/libx/libxfont/libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb >/dev/null 2>&1"
+        )
 
-            progress_display.update(progress_bar(percentage_done=70))
-            os.system("rm libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb")
+        progress_bar.update(progress(30))
+        os.system(
+            "wget --output-document xvfb.deb http://security.ubuntu.com/ubuntu/pool/universe/x/xorg-server/xvfb_1.18.4-0ubuntu0.11_amd64.deb >/dev/null 2>&1"
+        )
 
-            progress_display.update(progress_bar(percentage_done=80))
-            os.system("rm xvfb.deb")
+        progress_bar.update(progress(40))
+        os.system("dpkg -i libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb >/dev/null 2>&1")
 
-            progress_display.update(progress_bar(percentage_done=90))
-            os.system("bash frame-buffer start")
+        progress_bar.update(progress(50))
+        os.system("dpkg -i xvfb.deb >/dev/null 2>&1")
 
-            os.environ["DISPLAY"] = ":1"
-        progress_display.update(progress_bar(percentage_done=100))
+        progress_bar.update(progress(70))
+        os.system("rm libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb")
 
+        progress_bar.update(progress(80))
+        os.system("rm xvfb.deb")
 
-def side_by_side():
-    raise NotImplementedError()
+        progress_bar.update(progress(90))
+        os.system("bash frame-buffer start")
+
+        os.environ["DISPLAY"] = ":1"
+    progress_bar.update(progress(100))
