@@ -20,12 +20,105 @@ from typing import Optional
 import matplotlib.pyplot as plt
 
 __version__ = "<REPLACE_WITH_VERSION>"
-__all__ = ["plot_frames", "show_video", "start_xserver"]
+__all__ = ["plot_frames", "show_video", "start_xserver", "overlay", "side_by_side"]
+
+
+def show_objects_table(objects: list) -> None:
+    """Visualizes objects in a way that they are clickable and filterable.
+
+    Example:
+    event = controller.step("MoveAhead")
+    objects = event.metadata["objects"]
+    show_objects_table(objects)
+    """
+    import pandas as pd
+    from collections import OrderedDict
+    from google.colab.data_table import DataTable
+
+    processed_objects = []
+    for obj in objects:
+        obj = obj.copy()
+        obj["position[x]"] = round(obj["position"]["x"], 4)
+        obj["position[y]"] = round(obj["position"]["y"], 4)
+        obj["position[z]"] = round(obj["position"]["z"], 4)
+
+        obj["rotation[x]"] = round(obj["rotation"]["x"], 4)
+        obj["rotation[y]"] = round(obj["rotation"]["y"], 4)
+        obj["rotation[z]"] = round(obj["rotation"]["z"], 4)
+
+        del obj["position"]
+        del obj["rotation"]
+
+        # these are too long to display
+        del obj["objectOrientedBoundingBox"]
+        del obj["axisAlignedBoundingBox"]
+        del obj["receptacleObjectIds"]
+
+        obj["mass"] = round(obj["mass"], 4)
+        obj["distance"] = round(obj["mass"], 4)
+
+        obj = OrderedDict(obj)
+        obj.move_to_end("distance", last=False)
+        obj.move_to_end("rotation[z]", last=False)
+        obj.move_to_end("rotation[y]", last=False)
+        obj.move_to_end("rotation[x]", last=False)
+
+        obj.move_to_end("position[z]", last=False)
+        obj.move_to_end("position[y]", last=False)
+        obj.move_to_end("position[x]", last=False)
+
+        obj.move_to_end("name", last=False)
+        obj.move_to_end("objectId", last=False)
+        obj.move_to_end("objectType", last=False)
+
+        processed_objects.append(obj)
+
+    df = pd.DataFrame(processed_objects)
+    print(
+        "Object Metadata. Not showing objectOrientedBoundingBox, axisAlignedBoundingBox, and receptacleObjectIds for clarity."
+    )
+
+    return DataTable(df, max_columns=150, num_rows_per_page=150)
+
+
+def overlay(
+    frame1: np.ndarray,
+    frame2: np.ndarray,
+    title: Optional[str] = None,
+    frame2_alpha: float = 0.75,
+) -> None:
+    """Blend image frame1 and frame2 on top of each other.
+
+    Example:
+    event1 = controller.last_event
+    event2 = controller.step("RotateRight")
+    overlay(event1.frame, event2.frame)
+    """
+    fig, ax = plt.subplots(nrows=1, ncols=1, dpi=150, figsize=(5, 6))
+    if not (0 < frame2_alpha < 1):
+        raise ValueError("frame2_alpha must be in (0:1) not " + frame2_alpha)
+
+    if frame1.dtype == np.uint8:
+        frame1 = frame1 / 255
+    if frame2.dtype == np.uint8:
+        frame2 = frame2 / 255
+
+    ax.imshow(frame2_alpha * frame2 + (1 - frame2_alpha) * frame1)
+    ax.axis("off")
+    if title:
+        fig.suptitle(title, y=0.87, x=0.5125)
 
 
 def side_by_side(
     frame1: np.ndarray, frame2: np.ndarray, title: Optional[str] = None
 ) -> None:
+    """Plot 2 image frames next to each other.
+
+    Example:
+    event1 = controller.last_event
+    event2 = controller.step("RotateRight")
+    overlay(event1.frame, event2.frame)
+    """
     fig, axs = plt.subplots(nrows=1, ncols=2, dpi=150, figsize=(8, 5))
     axs[0].imshow(frame1)
     axs[0].axis("off")
@@ -36,7 +129,11 @@ def side_by_side(
 
 
 def plot_frames(event: object) -> None:
-    """Visualize all the frames on an AI2-THOR Event."""
+    """Visualize all the frames on an AI2-THOR Event.
+
+    Example:
+    plot_frames(controller.last_event)
+    """
     frames = dict()
     third_person_frames = event.third_party_camera_frames
     if event.frame is not None:
@@ -90,12 +187,20 @@ def plot_frames(event: object) -> None:
 
 
 def show_video(frames: Sequence[np.ndarray], fps: int = 10):
-    """Show a video composed of a sequence of frames."""
+    """Show a video composed of a sequence of frames.
+
+    Example:
+    frames = [
+        controller.step("RotateRight", degrees=5).frame
+        for _ in range(72)
+    ]
+    show_video(frames, fps=5)
+    """
     frames = ImageSequenceClip(frames, fps=fps)
     return frames.ipython_display()
 
 
-def start_xserver():
+def start_xserver() -> None:
     """Provide the ability to render AI2-THOR using Google Colab."""
 
     def progress(value):
