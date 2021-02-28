@@ -16,6 +16,63 @@ from typing import Sequence
 import numpy as np
 import os
 
+import matplotlib.pyplot as plt
+
+__version__ = "<REPLACE_WITH_VERSION>"
+
+
+def plot_frames(event: object) -> None:
+    frames = dict()
+    third_person_frames = event.third_party_camera_frames
+    if event.frame is not None:
+        frames["RGB"] = event.frame
+    if event.instance_segmentation_frame is not None:
+        frames["Instance Segmentation"] = event.instance_segmentation_frame
+    if event.semantic_segmentation_frame is not None:
+        frames["Semantic Segmentation"] = event.semantic_segmentation_frame
+    if event.normals_frame is not None:
+        frames["Normals"] = event.normals_frame
+    if event.depth_frame is not None:
+        frames["Depth"] = event.depth_frame
+
+    if len(frames) == 0:
+        raise Exception("No agent frames rendered on this event!")
+
+    rows = 2 if len(third_person_frames) else 1
+    cols = max(len(frames), len(third_person_frames))
+    fig, axs = plt.subplots(
+        nrows=rows, ncols=cols, dpi=150, figsize=(3 * cols, 3 * rows)
+    )
+
+    agent_row = axs[0] if rows > 1 else axs
+
+    for i, (name, frame) in enumerate(frames.items()):
+        ax = agent_row[i] if cols > 1 else agent_row
+        im = ax.imshow(frame)
+        ax.axis("off")
+        ax.set_title(name)
+
+        if name == "Depth":
+            fig.colorbar(im, fraction=0.046, pad=0.04, ax=ax)
+
+    # set unused axes off
+    for i in range(len(frames), cols):
+        agent_row[i].axis("off")
+
+    # add third party camera frames
+    if rows > 1:
+        for i, frame in enumerate(third_person_frames):
+            ax = axs[1][i] if cols > 1 else axs[1]
+            ax.imshow(frame)
+            ax.axis("off")
+        for i in range(len(third_person_frames), cols):
+            axs[1][i].axis("off")
+
+        fig.text(x=0.1, y=0.715, s="Agent Frames", rotation="vertical", va="center")
+        fig.text(
+            x=0.1, y=0.3025, s="Third Person Frames", rotation="vertical", va="center"
+        )
+
 
 def show_video(frames: Sequence[np.ndarray], fps: int = 10):
     """Show a video composed of a sequence of frames."""
