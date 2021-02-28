@@ -1,9 +1,13 @@
 from setuptools import setup
 
+version = "<REPLACE_WITH_VERSION>"
+
+# use current date & time for dev version
+
 setup(
     name="ai2thor_colab",
     packages=["ai2thor_colab"],
-    version="0.0.1.dev1",
+    version=version,
     license="Apache",
     description="Support to run AI2-THOR freely in Google Colab!",
     long_description="Support to run AI2-THOR freely in Google Colab!",
