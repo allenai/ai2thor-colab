@@ -43,4 +43,4 @@ ai2thor_colab.show_video(frames, fps=5)
 
 ## License
 
-AI2-THOR Colab is [Apache Licensed](LICENSE).
+AI2-THOR Colab is licensed under [Apache 2.0](LICENSE).
