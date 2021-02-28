@@ -15,11 +15,24 @@ from moviepy.editor import ImageSequenceClip
 from typing import Sequence
 import numpy as np
 import os
+from typing import Optional
 
 import matplotlib.pyplot as plt
 
 __version__ = "<REPLACE_WITH_VERSION>"
 __all__ = ["plot_frames", "show_video", "start_xserver"]
+
+
+def side_by_side(
+    frame1: np.ndarray, frame2: np.ndarray, title: Optional[str] = None
+) -> None:
+    fig, axs = plt.subplots(nrows=1, ncols=2, dpi=150, figsize=(8, 5))
+    axs[0].imshow(frame1)
+    axs[0].axis("off")
+    axs[1].imshow(frame2)
+    axs[1].axis("off")
+    if title:
+        fig.suptitle(title, y=0.85, x=0.5125)
 
 
 def plot_frames(event: object) -> None:
