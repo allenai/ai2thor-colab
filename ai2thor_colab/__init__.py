@@ -94,7 +94,7 @@ def overlay(
     event2 = controller.step("RotateRight")
     overlay(event1.frame, event2.frame)
     """
-    fig, ax = plt.subplots(nrows=1, ncols=1, dpi=150, figsize=(5, 6))
+    fig, ax = plt.subplots(nrows=1, ncols=1, dpi=150, figsize=(4, 5))
     if not (0 < frame2_alpha < 1):
         raise ValueError("frame2_alpha must be in (0:1) not " + frame2_alpha)
 
