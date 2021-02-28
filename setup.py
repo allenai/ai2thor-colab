@@ -2,26 +2,27 @@ from setuptools import setup
 
 version = "<REPLACE_WITH_VERSION>"
 
-# use current date & time for dev version
+with open("README.md", encoding="utf-8") as f:
+    long_description = f.read()
 
 setup(
     name="ai2thor_colab",
     packages=["ai2thor_colab"],
     version=version,
-    license="Apache",
-    description="Support to run AI2-THOR freely in Google Colab!",
-    long_description="Support to run AI2-THOR freely in Google Colab!",
+    license="Apache 2.0",
+    description="Utility functions for using AI2-THOR with Google Colab.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author_email="ai2thor@allenai.org",
     author="Allen Institute for AI",
     install_requires=["numpy", "moviepy"],
     url="https://github.com/allenai/ai2thor-colab",
     classifiers=[
         "Intended Audience :: Science/Research",
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "License :: OSI Approved :: Apache Software License",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
