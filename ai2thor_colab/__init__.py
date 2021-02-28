@@ -22,6 +22,7 @@ __version__ = "<REPLACE_WITH_VERSION>"
 
 
 def plot_frames(event: object) -> None:
+    """Visualize all the frames on an AI2-THOR Event."""
     frames = dict()
     third_person_frames = event.third_party_camera_frames
     if event.frame is not None:
