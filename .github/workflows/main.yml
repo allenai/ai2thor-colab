@@ -21,4 +21,4 @@ jobs:
           pip install invoke twine wheel
           invoke set-version --version "${GITHUB_REF##*/}"
           python setup.py sdist bdist_wheel
-          twine upload dist/* -u mattdeitke -p ${{ secrets.PYPI }}
+          twine upload dist/* -u 'mattdeitke' -p '${{ secrets.PYPI }}'
