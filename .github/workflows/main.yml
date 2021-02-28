@@ -17,6 +17,6 @@ jobs:
       - name: Set Up Release
         run: |
           pip install invoke
-          invoke set-version --version "\"${GITHUB_REF##*/}\""
+          invoke set-version --version "${GITHUB_REF##*/}"
           python setup.py sdist bdist_wheel
           twine upload dist/* -u mattdeitke -p ${{ secrets.PYPI }}
