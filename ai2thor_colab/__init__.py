@@ -19,6 +19,7 @@ import os
 import matplotlib.pyplot as plt
 
 __version__ = "<REPLACE_WITH_VERSION>"
+__all__ = ["plot_frames", "show_video", "start_xserver"]
 
 
 def plot_frames(event: object) -> None:
