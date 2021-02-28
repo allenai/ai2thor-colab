@@ -1,6 +1,8 @@
 name: AI2-THOR Colab
 
-on: [release]
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
