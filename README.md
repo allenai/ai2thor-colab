@@ -17,7 +17,7 @@
     </a>
 </p>
 
-## Templates
+## 💡 Templates
 
 To get started, we recommend saving a copy of the <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">AI2-THOR Colab Minimal Starter Template</a> to your drive.
 
