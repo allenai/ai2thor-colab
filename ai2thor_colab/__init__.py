@@ -55,7 +55,7 @@ def show_objects_table(objects: list) -> None:
         del obj["receptacleObjectIds"]
 
         obj["mass"] = round(obj["mass"], 4)
-        obj["distance"] = round(obj["mass"], 4)
+        obj["distance"] = round(obj["distance"], 4)
 
         obj = OrderedDict(obj)
         obj.move_to_end("distance", last=False)
