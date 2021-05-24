@@ -21,6 +21,10 @@
 
 To get started, we recommend saving a copy of the <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">AI2-THOR Colab Minimal Starter Template</a> to your drive.
 
+<img src="/doc/static/full-starter-template.svg" />
+
+<img src="/doc/static/minimal-starter-template.svg" />
+
 ## 💻 Setup
 
 Using Python's packaging manager, `ai2thor_colab` can be installed with
@@ -40,7 +44,7 @@ ai2thor_colab.start_xserver()
 
 **Questions.** If you have any questions on AI2-THOR, please ask them on [AI2-THOR's GitHub Discussions Page](https://github.com/allenai/ai2thor/discussions).
 
-**Issues.** If you encounter any issues while using AI2-THOR, please open an [Issue on AI2-THOR's GitHub](https://github.com/allenai/ai2thor/issues).
+**Issues.** If you encounter any issues while using AI2-THOR, please open an [Issue on AI2-THOR's GitHub](https://github.com/allenai/ai2thor/issues). If you encounter an issue with AI2-THOR Colab, please open an [Issue on our GitHub](https://github.com/allenai/ai2thor-colab/issues)
 
 ## 🏫 Learn more
 
@@ -52,7 +56,7 @@ ai2thor_colab.start_xserver()
 
 ## 👋 Our Team
 
-AI2-THOR is an open-source project built by the [PRIOR team](//prior.allenai.org) at the [Allen Institute for AI](//allenai.org) (AI2).
+AI2-THOR and AI2-THOR Colab are open-source projects built by the [PRIOR team](//prior.allenai.org) at the [Allen Institute for AI](//allenai.org) (AI2).
 AI2 is a non-profit institute with the mission to contribute to humanity through high-impact AI research and engineering.
 
 <br />
