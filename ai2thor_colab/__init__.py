@@ -201,7 +201,9 @@ def show_video(frames: Sequence[np.ndarray], fps: int = 10):
 
 
 def start_xserver() -> None:
-    """Provide the ability to render AI2-THOR using Google Colab."""
+    """Provide the ability to render AI2-THOR using Google Colab. """
+    # Thanks to the [Unity ML Agents team](https://github.com/Unity-Technologies/ml-agents)
+    # for most of this setup! :)
 
     def progress(value):
         return HTML(
@@ -255,12 +257,12 @@ def start_xserver() -> None:
 
         progress_bar.update(progress(20))
         os.system(
-            "wget http://security.ubuntu.com/ubuntu/pool/main/libx/libxfont/libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb >/dev/null 2>&1"
+            "wget http://ai2thor.allenai.org/ai2thor-colab/libxfont1_1.5.1-1ubuntu0.16.04.4_amd64.deb >/dev/null 2>&1"
         )
 
         progress_bar.update(progress(30))
         os.system(
-            "wget --output-document xvfb.deb http://security.ubuntu.com/ubuntu/pool/universe/x/xorg-server/xvfb_1.18.4-0ubuntu0.11_amd64.deb >/dev/null 2>&1"
+            "wget --output-document xvfb.deb http://ai2thor.allenai.org/ai2thor-colab/xvfb_1.18.4-0ubuntu0.12_amd64.deb >/dev/null 2>&1"
         )
 
         progress_bar.update(progress(40))
