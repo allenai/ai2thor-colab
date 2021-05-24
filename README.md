@@ -21,9 +21,15 @@
 
 To get started, we recommend saving a copy of the <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">AI2-THOR Colab Minimal Starter Template</a> to your drive.
 
-<img src="/doc/static/full-starter-template.svg" />
+<a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing">
+    <img src="/doc/static/full-starter-template.svg" />
+</a>
 
-<img src="/doc/static/minimal-starter-template.svg" />
+---
+
+<a href="https://colab.research.google.com/drive/1dCxcvgpj1VKkn9X2_8Zdg9kL1QkzHYA1?usp=sharing">
+    <img src="/doc/static/minimal-starter-template.svg" />
+</a>
 
 ## 💻 Setup
 
