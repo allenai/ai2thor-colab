@@ -1,6 +1,6 @@
 <p align="center"><img width="80%" src="doc/static/cover.svg" /></p>
 
-<h2 align="center"><em>Run AI2-THOR Freely on the Cloud using Google Colab</em></h2>
+<h2 align="center"><em>Run AI2-THOR on the Cloud using Google Colab</em></h2>
 
 <p align="center">
     <a href="//github.com/allenai/ai2thor/blob/main/LICENSE">
