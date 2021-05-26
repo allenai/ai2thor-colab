@@ -59,7 +59,7 @@ pip install ai2thor_colab
 
 #### 🔥 Start X Server
 
-AI2-THOR requires an X Server to run on a Linux machine. It allows us to open a Unity window where we can render scenes and observe images. Colab runs Linux, but it does not start an X Server by default. Using `ai2thor_colab.start_xserver()`, we can install all required xserver dependencies and start it up:
+AI2-THOR requires an X Server to run on a Linux machine. It allows us to open a Unity window where we can render scenes and observe images. Colab runs Linux, but it does not start an X Server by default. Using `ai2thor_colab.start_xserver()`, we can install all required X Server dependencies and start it up:
 
 ```python
 import ai2thor_colab
