@@ -1,4 +1,4 @@
-<p align="center"><img width="80%" src="doc/static/cover.svg" /></p>
+<p align="center"><img width="80%" src="https://raw.githubusercontent.com/allenai/ai2thor-colab/main/doc/static/cover.svg" /></p>
 
 <h2 align="center"><em>Run AI2-THOR on the Cloud using Google Colab</em></h2>
 
@@ -6,14 +6,17 @@
     <a href="//github.com/allenai/ai2thor/blob/main/LICENSE">
         <img alt="License" src="https://img.shields.io/github/license/allenai/ai2thor.svg?color=blue">
     </a>
-    <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">
-        <img src="https://img.shields.io/badge/colab-template-orange">
-    </a>
     <a href="https://ai2thor.allenai.org/" target="_blank">
         <img src="https://img.shields.io/badge/ai2thor-website-blue">
     </a>
     <a href="https://github.com/allenai/ai2thor" target="_blank">
         <img src="https://img.shields.io/badge/ai2thor-github-green">
+    </a>
+    <a href="https://colab.research.google.com/github/allenai/ai2thor-colab/blob/main/templates/AI2_THOR_Full_Starter_Template.ipynb" target="_blank">
+        <img src="https://img.shields.io/badge/colab-full&nbsp;template-orange">
+    </a>
+    <a href="https://colab.research.google.com/github/allenai/ai2thor-colab/blob/main/templates/AI2_THOR_Minimal_Starter_Template.ipynb" target="_blank">
+        <img src="https://img.shields.io/badge/colab-minimal&nbsp;template-orange">
     </a>
 </p>
 
@@ -21,31 +24,23 @@
 
 #### 💪 Full Starter Template
 
-<a href="https://colab.research.google.com/github/allenai/ai2thor-colab/blob/main/templates/AI2_THOR_Full_Starter_Template.ipynb">
-    <img src="/doc/static/full-starter-template.svg" />
-</a>
-
 To get started, we recommend saving a copy of the <a href="https://colab.research.google.com/github/allenai/ai2thor-colab/blob/main/templates/AI2_THOR_Full_Starter_Template.ipynb" target="_blank">AI2-THOR Colab Full Starter Template</a> to your drive. It goes over many helper functions that are often useful.
 
-<br/>
+<a href="https://colab.research.google.com/github/allenai/ai2thor-colab/blob/main/templates/AI2_THOR_Full_Starter_Template.ipynb">
+    <img src="https://raw.githubusercontent.com/allenai/ai2thor-colab/main/doc/static/full-starter-template.svg" />
+</a>
 
 https://user-images.githubusercontent.com/28768645/119420726-06d8bc80-bcb2-11eb-9acf-e9b151121506.mp4
 
-<br/>
-
 #### 👑 Minimal Starter Template
 
-<a href="https://colab.research.google.com/drive/1dCxcvgpj1VKkn9X2_8Zdg9kL1QkzHYA1?usp=sharing">
-    <img src="/doc/static/minimal-starter-template.svg" />
+We also provide a <a href="https://colab.research.google.com/github/allenai/ai2thor-colab/blob/main/templates/AI2_THOR_Minimal_Starter_Template.ipynb" target="_blank">Minimal Starter Template</a> that does not showcase any helper functions. This is often useful as a starting point to minimally reproduce issues, highlight, or test functionality.
+
+<a href="https://colab.research.google.com/github/allenai/ai2thor-colab/blob/main/templates/AI2_THOR_Minimal_Starter_Template.ipynb">
+    <img src="https://raw.githubusercontent.com/allenai/ai2thor-colab/main/doc/static/minimal-starter-template.svg" />
 </a>
 
-We also provide a <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">Minimal Starter Template</a> that does not showcase any helper functions. This is often useful as a starting point to minimally reproduce issues, highlight, or test functionality.
-
-<br/>
-
 ![image](https://user-images.githubusercontent.com/28768645/119420252-e5c39c00-bcb0-11eb-84d8-98ed862a687b.png)
-
-<br/>
 
 ## 🐱‍💻 Setup Overview
 
