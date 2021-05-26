@@ -21,11 +21,11 @@
 
 #### 💪 Full Starter Template
 
-<a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing">
+<a href="https://colab.research.google.com/github/allenai/ai2thor-colab/blob/main/templates/AI2_THOR_Full_Starter_Template.ipynb">
     <img src="/doc/static/full-starter-template.svg" />
 </a>
 
-To get started, we recommend saving a copy of the <a href="https://colab.research.google.com/drive/1VyvpUahrlakrlwebuuFZl73ioqCuVF33?usp=sharing" target="_blank">AI2-THOR Colab Full Starter Template</a> to your drive. It goes over many helper functions that are often useful.
+To get started, we recommend saving a copy of the <a href="https://colab.research.google.com/github/allenai/ai2thor-colab/blob/main/templates/AI2_THOR_Full_Starter_Template.ipynb" target="_blank">AI2-THOR Colab Full Starter Template</a> to your drive. It goes over many helper functions that are often useful.
 
 <br/>
 
