@@ -15,7 +15,7 @@ setup(
     long_description_content_type="text/markdown",
     author_email="ai2thor@allenai.org",
     author="Allen Institute for AI",
-    install_requires=["numpy", "moviepy", "pandas", "ai2thor", "Pillow"],
+    install_requires=["numpy", "moviepy>=1.0.3", "pandas", "ai2thor", "Pillow"],
     url="https://github.com/allenai/ai2thor-colab",
     classifiers=[
         "Intended Audience :: Science/Research",
