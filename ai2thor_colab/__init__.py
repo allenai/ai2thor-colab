@@ -1,16 +1,6 @@
 from IPython.display import HTML, display
 import sys
 
-import imageio
-
-# this has no cost when ffmpeg is already downloaded, but
-# it prevents moviepy from displaying an annoying message
-saved_stdout = sys.stdout
-with open("/dev/null", "w") as f:
-    sys.stdout = f
-    imageio.plugins.ffmpeg.download()
-sys.stdout = saved_stdout
-
 from moviepy.editor import ImageSequenceClip
 from typing import Sequence
 import numpy as np
